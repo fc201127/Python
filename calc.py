@@ -42,7 +42,9 @@ class Calculator(tk.Frame):
                         command=self.clickBtnNum9, height=1, width=2, font=f2)
         self.btnNum0 = tk.Button(self, text="0",
                         command=self.clickBtnNum0, height=1, width=2, font=f2)
-        self.btnSqrt = tk.Button(self, text="S",
+
+        self.imageSqrt = tk.PhotoImage(file = "small.gif")
+        self.btnSqrt = tk.Button(self, text="S", image=self.imageSqrt,
                         command=self.clickBtnNumSqrt, height=1, width=2, font=f2)
 
         #
@@ -109,7 +111,7 @@ class Calculator(tk.Frame):
 
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v2.0")
+    cal.master.title("My Calculator v2.1")
     cal.mainloop()
 
 if __name__ == "__main__":
