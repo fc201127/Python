@@ -10,13 +10,19 @@ class Calculator(tk.Frame):
                         # 可以理解成, Calculator "has a" __init__ func.
         tk.Frame.__init__(self)
         self.grid()
+        self.createWidgets()    # cal.createWidgets()
+
+    def createWidgets(self):
+        self.lblNum  = tk.Label(self, text="0")
+        self.btnNum1 = tk.Button(self, text="1")
+        self.lblNum.grid(column = 0, row = 0)
+        self.btnNum1.grid(column = 0, row = 1)
 
         
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v0.1")
+    cal.master.title("My Calculator v0.2")
     cal.mainloop()
 
 if __name__ == "__main__":
     main()
-
