@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import tkinter as tk
+import tkinter.font as tkFont
 
 # Calculator (child class) 繼承 tk.Frame (parent class)
 # 表示 Calculator 擁有 tk.Frame 的特性 (member function, attributes)
@@ -13,8 +14,13 @@ class Calculator(tk.Frame):
         self.createWidgets()    # cal.createWidgets()
 
     def createWidgets(self):
-        self.lblNum  = tk.Label(self, text="0")
-        self.btnNum1 = tk.Button(self, text="1", command=self.clickBtnNum1)
+        f1 = tkFont.Font(size=128, family="Helvetica")
+        f2 = tkFont.Font(size=96, family="Helvetica")
+
+        self.lblNum  = tk.Label(self, text="0",
+                        relief="sunken", height=1, width=7, font=f1)
+        self.btnNum1 = tk.Button(self, text="1", command=self.clickBtnNum1,
+                        height=1, width=2, font=f2)
         self.lblNum.grid(column = 0, row = 0)
         self.btnNum1.grid(column = 0, row = 1)
 
@@ -24,7 +30,7 @@ class Calculator(tk.Frame):
 
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v0.4")
+    cal.master.title("My Calculator v1.0")
     cal.mainloop()
 
 if __name__ == "__main__":
