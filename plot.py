@@ -7,6 +7,7 @@
 #
 import tkinter as tk
 import tkinter.font as tkFont
+import matplotlib.pyplot as pyplot
 
 class Plotter(tk.Frame):    # inherit from Frame
     def __init__(self):
@@ -44,11 +45,21 @@ class Plotter(tk.Frame):    # inherit from Frame
         self.cvsMain.grid(column=0, row = 2, columnspan = 3, sticky = tk.NE + tk.SW)
 
     def clickBtnLoad(self):
-        print("BUTTON CLICKED")
+        x = self.txtX.get("1.0", tk.END).split(",")
+        for i in range(len(x)):
+            x[i] = float(x[i])
+
+        y = self.txtY.get("1.0", tk.END).split(",")
+        for i in range(len(y)):
+            y[i] = float(y[i])
+
+        pyplot.plot(x, y, 'bo')
+        pyplot.show()
+
 
 def main():
     pl = Plotter()
-    pl.master.title("My Plotter v1.0")
+    pl.master.title("My Plotter v2.0")
     pl.mainloop()
 
 
