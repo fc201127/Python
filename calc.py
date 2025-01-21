@@ -14,20 +14,17 @@ class Calculator(tk.Frame):
 
     def createWidgets(self):
         self.lblNum  = tk.Label(self, text="0")
-        #self.btnNum1 = tk.Button(self, text="1", command=self.clickBtnNum1)
-        self.btnNum1 = tk.Button(self, text="1")
-        self.btnNum1.configure(command=self.clickBtnNum1)
-
+        self.btnNum1 = tk.Button(self, text="1", command=self.clickBtnNum1)
         self.lblNum.grid(column = 0, row = 0)
         self.btnNum1.grid(column = 0, row = 1)
 
         
     def clickBtnNum1(self):
-        self.lblNum.configure(text="1")
+        self.lblNum.configure(text=self.lblNum.cget("text") + "1")
 
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v0.3")
+    cal.master.title("My Calculator v0.4")
     cal.mainloop()
 
 if __name__ == "__main__":
