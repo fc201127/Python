@@ -65,77 +65,42 @@ class Calculator(tk.Frame):
         self.btnNum0.grid(column = 0, row = 4, sticky=tk.NW+tk.SE, columnspan=2)
         self.btnSqrt.grid(column = 2, row = 4, sticky=tk.NW+tk.SE)
 
-
-
+    def setNumStr(self, contentStr):
+        if self.shouldReset == True:
+            self.lblNum.configure(text= contentStr)
+            self.shouldReset = False
+        else:
+            self.lblNum.configure(text=self.lblNum.cget("text") + contentStr)
         
     def clickBtnNum1(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "1")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "1")
+        self.setNumStr("1")
 
     def clickBtnNum2(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "2")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "2")
+        self.setNumStr("2")
 
     def clickBtnNum3(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "3")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "3")
+        self.setNumStr("3")
 
     def clickBtnNum4(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "4")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "4")
+        self.setNumStr("4")
 
     def clickBtnNum5(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "5")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "5")
+        self.setNumStr("5")
+
     def clickBtnNum6(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "6")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "6")
+        self.setNumStr("6")
 
     def clickBtnNum7(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "7")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "7")
+        self.setNumStr("7")
 
     def clickBtnNum8(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "8")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "8")
+        self.setNumStr("8")
 
     def clickBtnNum9(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "9")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "9")
+        self.setNumStr("9")
 
     def clickBtnNum0(self):
-        if self.shouldReset == True:
-            self.lblNum.configure(text= "0")
-            self.shouldReset = False
-        else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + "0")
+        self.setNumStr("0")
 
     def clickBtnNumSqrt(self):
         v = str(round(math.sqrt(float(self.lblNum.cget("text"))), 2))
@@ -144,7 +109,7 @@ class Calculator(tk.Frame):
 
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v1.3")
+    cal.master.title("My Calculator v2.0")
     cal.mainloop()
 
 if __name__ == "__main__":
