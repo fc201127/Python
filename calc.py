@@ -2,6 +2,7 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import math
+from PIL import ImageTk
 
 # Calculator (child class) 繼承 tk.Frame (parent class)
 # 表示 Calculator 擁有 tk.Frame 的特性 (member function, attributes)
@@ -43,7 +44,9 @@ class Calculator(tk.Frame):
         self.btnNum0 = tk.Button(self, text="0",
                         command=self.clickBtnNum0, height=1, width=2, font=f2)
 
-        self.imageSqrt = tk.PhotoImage(file = "small.gif")
+        self.imageSqrt = ImageTk.PhotoImage(file = "根號x.png")
+        # image=self.XXXX ... 必須是 member variable, 不能用 local var.  因為 local var. 在
+        # createWidgets() return 後就會被移除.
         self.btnSqrt = tk.Button(self, text="S", image=self.imageSqrt,
                         command=self.clickBtnNumSqrt, height=1, width=2, font=f2)
 
@@ -52,7 +55,7 @@ class Calculator(tk.Frame):
         # |
         # |
         # |
-        # v y (row)
+        # y (row)
         #
         self.lblNum.grid (column = 0, row = 0, sticky=tk.NW+tk.SE, columnspan=3)
         self.btnNum1.grid(column = 0, row = 1, sticky=tk.NW+tk.SE)
@@ -111,8 +114,8 @@ class Calculator(tk.Frame):
 
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v2.1")
+    cal.master.title("My Calculator v3.0")
     cal.mainloop()
 
-if __name__ == "__main__":
+if __name == "__main__":
     main()
