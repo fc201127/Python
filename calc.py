@@ -21,8 +21,7 @@ class Calculator(tk.Frame):
         f1 = tkFont.Font(size=128, family="Helvetica")
         f2 = tkFont.Font(size=96, family="Helvetica")
 
-        self.lblNum  = tk.Label(self, text="0",
-                        relief="sunken", height=1, width=7, font=f1)
+        self.txtNum  = tk.Text(self, relief="sunken", height=1, width=7, font=f1)
         self.btnNum1 = tk.Button(self, text="1",
                         command=self.clickBtnNum1, height=1, width=2, font=f2)
         self.btnNum2 = tk.Button(self, text="2",
@@ -55,9 +54,9 @@ class Calculator(tk.Frame):
         # |
         # |
         # |
-        # y (row)
+        # v y (row)
         #
-        self.lblNum.grid (column = 0, row = 0, sticky=tk.NW+tk.SE, columnspan=3)
+        self.txtNum.grid (column = 0, row = 0, sticky=tk.NW+tk.SE, columnspan=3)
         self.btnNum1.grid(column = 0, row = 1, sticky=tk.NW+tk.SE)
         self.btnNum2.grid(column = 1, row = 1, sticky=tk.NW+tk.SE)
         self.btnNum3.grid(column = 2, row = 1, sticky=tk.NW+tk.SE)
@@ -72,10 +71,11 @@ class Calculator(tk.Frame):
 
     def setNumStr(self, contentStr):
         if self.shouldReset == True:
-            self.lblNum.configure(text= contentStr)
+            self.txtNum.delete("1.0", tk.END)
+            self.txtNum.insert("1.0", contentStr)
             self.shouldReset = False
         else:
-            self.lblNum.configure(text=self.lblNum.cget("text") + contentStr)
+            self.txtNum.insert(tk.END, contentStr)
         
     def clickBtnNum1(self):
         self.setNumStr("1")
@@ -108,14 +108,15 @@ class Calculator(tk.Frame):
         self.setNumStr("0")
 
     def clickBtnNumSqrt(self):
-        v = str(round(math.sqrt(float(self.lblNum.cget("text"))), 2))
-        self.lblNum.configure(text=v)
+        v = str(round(math.sqrt(float(self.txtNum.get("1.0", tk.END))), 2))
+        self.txtNum.delete("1.0", tk.END)
+        self.txtNum.insert("1.0", v)
         self.shouldReset = True
 
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v3.0")
+    cal.master.title("My Calculator v最終版")
     cal.mainloop()
 
-if __name == "__main__":
+if __name__ == "__main__":
     main()
