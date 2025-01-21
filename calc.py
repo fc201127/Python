@@ -19,10 +19,50 @@ class Calculator(tk.Frame):
 
         self.lblNum  = tk.Label(self, text="0",
                         relief="sunken", height=1, width=7, font=f1)
-        self.btnNum1 = tk.Button(self, text="1", command=self.clickBtnNum1,
-                        height=1, width=2, font=f2)
-        self.lblNum.grid(column = 0, row = 0)
+        self.btnNum1 = tk.Button(self, text="1",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum2 = tk.Button(self, text="2",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum3 = tk.Button(self, text="3",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum4 = tk.Button(self, text="4",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum5 = tk.Button(self, text="5",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum6 = tk.Button(self, text="6",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum7 = tk.Button(self, text="7",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum8 = tk.Button(self, text="8",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum9 = tk.Button(self, text="9",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnNum0 = tk.Button(self, text="0",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+        self.btnSqrt = tk.Button(self, text="S",
+                        command=self.clickBtnNum1, height=1, width=2, font=f2)
+
+        #
+        # +--------------------> x (column)
+        # |
+        # |
+        # |
+        # v y (row)
+        #
+        self.lblNum.grid (column = 0, row = 0, columnspan=3)
         self.btnNum1.grid(column = 0, row = 1)
+        self.btnNum2.grid(column = 1, row = 1)
+        self.btnNum3.grid(column = 2, row = 1)
+        self.btnNum4.grid(column = 0, row = 2)
+        self.btnNum5.grid(column = 1, row = 2)
+        self.btnNum6.grid(column = 2, row = 2)
+        self.btnNum7.grid(column = 0, row = 3)
+        self.btnNum8.grid(column = 1, row = 3)
+        self.btnNum9.grid(column = 2, row = 3)
+        self.btnNum0.grid(column = 0, row = 4, columnspan=2)
+        self.btnSqrt.grid(column = 2, row = 4)
+
+
 
         
     def clickBtnNum1(self):
@@ -30,7 +70,7 @@ class Calculator(tk.Frame):
 
 def main():
     cal = Calculator()
-    cal.master.title("My Calculator v1.0")
+    cal.master.title("My Calculator v1.1")
     cal.mainloop()
 
 if __name__ == "__main__":
