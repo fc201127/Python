@@ -47,10 +47,12 @@ class Plotter(tk.Frame):    # inherit from Frame
         self.cvsMain.grid(column=0, row = 2, columnspan = 3, sticky = tk.NE + tk.SW)
 
     def makeScatter(self, x, y):
-        pyplot.figure()
+        fig = pyplot.figure()
+        ax = fig.add_subplot(111)
         pyplot.plot(x, y, 'bo')
-        pyplot.ylim(min(y) - 10, max(y) + 10)
 
+        for i, j in zip(x, y):
+            ax.annotate(str(j), xy=(i,j))
         pyplot.savefig('temp.png')
 
 
@@ -71,7 +73,7 @@ class Plotter(tk.Frame):    # inherit from Frame
 
 def main():
     pl = Plotter()
-    pl.master.title("My Plotter v3.0")
+    pl.master.title("My Plotter v最終版")
     pl.mainloop()
 
 
