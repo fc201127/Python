@@ -5,9 +5,11 @@
 # control, command (Control)
 # data (Model)
 #
+import os
 import tkinter as tk
 import tkinter.font as tkFont
 import matplotlib.pyplot as pyplot
+from PIL import ImageTk
 
 class Plotter(tk.Frame):    # inherit from Frame
     def __init__(self):
@@ -44,6 +46,14 @@ class Plotter(tk.Frame):    # inherit from Frame
         self.btnLoad.grid(column=2, row = 0, rowspan = 2, sticky = tk.NE + tk.SW)
         self.cvsMain.grid(column=0, row = 2, columnspan = 3, sticky = tk.NE + tk.SW)
 
+    def makeScatter(self, x, y):
+        pyplot.figure()
+        pyplot.plot(x, y, 'bo')
+        pyplot.ylim(min(y) - 10, max(y) + 10)
+
+        pyplot.savefig('temp.png')
+
+
     def clickBtnLoad(self):
         x = self.txtX.get("1.0", tk.END).split(",")
         for i in range(len(x)):
@@ -53,13 +63,15 @@ class Plotter(tk.Frame):    # inherit from Frame
         for i in range(len(y)):
             y[i] = float(y[i])
 
-        pyplot.plot(x, y, 'bo')
-        pyplot.show()
+        self.makeScatter(x, y)  # create "temp.png"
+        self.imageMain = ImageTk.PhotoImage(file = "temp.png")
+        self.cvsMain.create_image(400, 300, image = self.imageMain, anchor = tk.CENTER)
+        os.system("rm temp.png")
 
 
 def main():
     pl = Plotter()
-    pl.master.title("My Plotter v2.0")
+    pl.master.title("My Plotter v3.0")
     pl.mainloop()
 
 
