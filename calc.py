@@ -120,3 +120,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+    def clickBtnNum0(self):
+        self.setNumStr("0")
+
